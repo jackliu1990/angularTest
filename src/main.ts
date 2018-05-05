@@ -19,9 +19,6 @@ if (environment.production) {
 const c = platformBrowserDynamic();
 const compilerFactory: CompilerFactory = c.injector.get(CompilerFactory);
 const compiler = compilerFactory.createCompiler();
-/*const compiler = compilerFactory.createCompiler(
-  Array.isArray(compilerOptions) ? compilerOptions : [compilerOptions]);*/
-
 
 const module = NgModule({
   declarations: [
@@ -31,15 +28,26 @@ const module = NgModule({
     BrowserModule
   ],
   providers: [],
+  entryComponents: [AppComponent],
   bootstrap: [AppComponent]
 })(class {});
 
-
 compiler.compileModuleAsync(module)
-  .then((moduleFactory) => { c.bootstrapModuleFactory(moduleFactory); });
+  .then((moduleFactory) => { c.bootstrapModule(moduleFactory.moduleType).then( d => {
+    console.log(d);
+  })
+    .catch(err => console.log(err)); });
 
-
-/*c.bootstrapModule().then(a =>{
+/*c.bootstrapModule(NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})(class {})).then(a =>{
   console.log(a);
-})*/
+}).catch(err => console.log(err));*/
 
