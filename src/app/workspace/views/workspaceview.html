@@ -1,0 +1,75 @@
+<div id="contentDiv">
+  <div class="content-title">
+    <h2>
+      <i class="ico ico-img ico-wms wms-position"></i>
+      工作区
+    </h2>
+    <p>管理TS-GIS的工作区，工作区主要用于管理不同类型的存储媒介。</p>
+    <span class="add-workspace" routerLink="select" routerLinkActive="active">
+      <i class="ico ico-add"></i>
+      添加新的工作区
+    </span>
+  </div>
+
+
+  <div class="content-c">
+
+    <div class="title">
+      <span>工作区表单</span>
+      <a class="refresh" (click)="refresh()">
+        <i class="ico ico-refresh"></i>
+        刷新
+      </a>
+    </div>
+
+    <table class="data-list" cellspacing="0" id="id18">
+      <thead>
+        <tr>
+          <th><input type="hidden" autocomplete="off"></th>
+          <th><span>工作区名称</span></th>
+          <th><span>存储类型</span></th>
+          <th><span>数据集状态</span></th>
+          <th width="500px"><span>操作</span></th>
+        </tr>
+      </thead>
+
+      <tbody class="table-hover">
+        <tr *ngFor="let workspace of workspaces; let i = index" id="36">
+          <td class="tdNum"><span>{{i+1}}</span></td>
+          <td><span>{{workspace.name}}</span></td>
+          <td><span>{{workspace.type}}</span></td>
+          <td><span>{{workspace.status}}</span></td>
+          <td>
+            <button class="btn" (click)="editWorkspace(workspace.name, workspace.type)">
+              <i class="ico ico-edit"></i>
+              编辑
+            </button>
+            <button class="btn"  style="margin-left: 8px" (click)="copyWorkspace(workspace.name, workspace.type)">
+              复制
+            </button>
+            <button class="btn"  style="margin-left: 8px" [disabled]="workspace.status=='未初始化'" (click)="associateWorkspace(workspace.type, workspace.name)">
+              关联
+            </button>
+            <button class="btn"  style="margin-left: 8px" [disabled]="workspace.status!='未初始化'" (click)="initWorkspace(workspace.name)">
+              初始化
+            </button>
+            <button class="btn"  style="margin-left: 8px" [disabled]="workspace.status=='未初始化'"  (click)="destroyWorkspace(workspace.name)">
+              销毁
+            </button>
+            <button class="btn" style="margin-left: 8px"  (click)="deleteWorkspace(workspace.name)">
+              <i class="ico ico-del"></i>
+              删除
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
