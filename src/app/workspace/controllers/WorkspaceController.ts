@@ -8,6 +8,7 @@ export class WorkspaceComponent implements OnInit {
   workspaces: any[];
 
   constructor(private router: Router, private route: ActivatedRoute) {
+    console.log(route);
   }
 
   ngOnInit() {
