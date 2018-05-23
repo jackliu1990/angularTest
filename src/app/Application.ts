@@ -9,13 +9,16 @@ import {WorkspaceModule} from './workspace/WorkSpaceModule';
 import {CommonModule} from '@angular/common';
 import {ModalModule} from 'ngx-bootstrap';
 import {DemoModalServiceStaticComponent} from './comm/DemoModalServiceStaticComponent';
+import {FormsModule} from "@angular/forms";
+import {LoginComponent} from "./login/login.component";
 
 @NgModule({
   declarations: [
-    MainComponent, DemoModalServiceStaticComponent
+    MainComponent, DemoModalServiceStaticComponent,LoginComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ModalModule.forRoot(),
     RouterModule.forRoot([],
       {
