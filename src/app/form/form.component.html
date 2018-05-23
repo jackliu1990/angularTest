@@ -1,0 +1,47 @@
+<!--(ngSubmit)绑定的表单提交事件，ajax不需要-->
+<form #registerForm="ngForm" (ngSubmit)="doSubmit(registerForm.value)" >
+  <div>
+    <label for="userName">用户名:</label>
+    <!--给input设置一个本地变量，可以读取errors显示错误信息-->
+    <input type="text" id="userName" name="userName" [(ngModel)]="formData.userName" #userName="ngModel" required minlength="4">
+    <div *ngIf="userName.errors && (userName.dirty || userName.touched)" class="error">
+      <span [hidden]="!userName.errors.required">用户名必须输入</span>
+      <span [hidden]="!userName.errors.minlength">用户名至少4位</span>
+    </div>
+  </div>
+  <!--ngModelGroup指令可以给表单字段分组，值password是registerForm.value里该组的字段名，#passwordGroup是该组的本地变量名-->
+  <fieldset ngModelGroup="passwordGroup" #passwordGroup="ngModelGroup" aria-required="true">
+    <label for="password1">密码:</label>
+    <input type="password" id="password1" name="password1" [(ngModel)]="formData.password1" #password1="ngModel"  required minlength="8">
+    <label for="password2">重复密码:</label>
+    <!--使用自定义的校验器，加入repeatPassword指令，传入第一个密码输入框的ngModel,即用#password1="ngModel"声明的password1-->
+    <input type="password" id="password2" name="password2" [(ngModel)]="formData.password2" [repeatPassword]="password1">
+    <span *ngIf="formErrors['passwordGroup.password2']" class="error">
+      {{ formErrors['passwordGroup.password2'] }} </span>
+  </fieldset>
+
+  <div>
+    <label for="email">邮箱:</label>
+    <input type="text" id="email" name="email" [(ngModel)]="formData.email" required pattern="[\w]+?@[\w]+?\.[a-z]+?">
+    <!-- 可以通过表单的onValueChanged事件，读到当前的错误信息，写到指定字段里 -->
+    <div *ngIf="formErrors.email" class="error">
+      {{ formErrors.email }}
+    </div>
+  </div>
+  <div>
+    <label>性别:</label>
+    <input type="radio" name="sex" [(ngModel)]="formData.sex" value="male" checked="checked"> 男
+    <input type="radio" name="sex" [(ngModel)]="formData.sex" value="female" > 女
+  </div>
+  <fieldset ngModelGroup="nameGroup" #nameGroup="ngModelGroup">
+    <label>姓:</label>
+    <input type="text" name="firstName" [(ngModel)]="formData.firstName" required><br />
+    <label>名:</label>
+    <input type="text" name="lastName" [(ngModel)]="formData.lastName">
+  </fieldset>
+
+  <button type="button" class="btn btn-default"
+          [disabled]="!registerForm.valid" (click)="doSubmit(registerForm.value)">注册</button>
+</form>
+
+{{registerForm.value|json}}

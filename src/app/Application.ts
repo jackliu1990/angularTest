@@ -11,10 +11,12 @@ import {ModalModule} from 'ngx-bootstrap';
 import {DemoModalServiceStaticComponent} from './comm/DemoModalServiceStaticComponent';
 import {FormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login.component";
+import {FormComponent} from "./form/form.component";
+import {RepeatPasswordDirective} from "./form/repeat-password.directive";
 
 @NgModule({
   declarations: [
-    MainComponent, DemoModalServiceStaticComponent,LoginComponent
+    MainComponent, DemoModalServiceStaticComponent, LoginComponent, FormComponent, RepeatPasswordDirective
   ],
   imports: [
     BrowserModule,

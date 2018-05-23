@@ -7,6 +7,7 @@ import {Component} from '@angular/core';
     <div style="background-color: gray;height:200px;">
       <demo-modal-service-static></demo-modal-service-static>
       <app-login></app-login>
+      <app-form></app-form>
       <router-outlet></router-outlet>
     </div>
   `
