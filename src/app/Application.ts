@@ -13,10 +13,14 @@ import {FormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login.component";
 import {FormComponent} from "./form/form.component";
 import {RepeatPasswordDirective} from "./form/repeat-password.directive";
+import {GisComponent} from "./gisform/gis.compontent";
+import {GISDirective} from "./gisform/gis.directive";
 
 @NgModule({
   declarations: [
-    MainComponent, DemoModalServiceStaticComponent, LoginComponent, FormComponent, RepeatPasswordDirective
+    MainComponent, DemoModalServiceStaticComponent,
+    LoginComponent, FormComponent, RepeatPasswordDirective,
+    GisComponent,GISDirective
   ],
   imports: [
     BrowserModule,

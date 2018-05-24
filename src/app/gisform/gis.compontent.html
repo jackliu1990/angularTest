@@ -1,0 +1,8 @@
+<form #gisForm="ngForm" novalidate (ngSubmit)="doSubmit(gisForm.value)">
+  <input type="text" name="userName" #userName="ngModel" [(ngModel)]="user.userName" required unique>
+  <span *ngIf="userName.errors && (userName.dirty || userName.touched)" class="error">
+      <span *ngIf="userName.errors.required">用户名必须输入</span>
+       <span *ngIf="userName.errors.unique">用户名已经存在</span>
+    </span>
+  <button type="submit" class="btn btn-success" [disabled]="!gisForm.valid">登录</button>
+</form>
