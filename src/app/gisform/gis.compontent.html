@@ -4,5 +4,8 @@
       <span *ngIf="userName.errors.required">用户名必须输入</span>
        <span *ngIf="userName.errors.unique">用户名已经存在</span>
     </span>
+
+  <input type="number" NumberInput />
+  <input [textMask]="{mask: mask}" [(ngModel)]="myModel" type="text"/>
   <button type="submit" class="btn btn-success" [disabled]="!gisForm.valid">登录</button>
 </form>

@@ -11,6 +11,9 @@ import {UserModel} from "./user.model";
 export class GisComponent {
   private user = new UserModel();
 
+
+  public myModel = ''
+  public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
   constructor() {
 
   }

@@ -15,17 +15,20 @@ import {FormComponent} from "./form/form.component";
 import {RepeatPasswordDirective} from "./form/repeat-password.directive";
 import {GisComponent} from "./gisform/gis.compontent";
 import {GISDirective} from "./gisform/gis.directive";
+import {NumberInput} from "./gisform/NumberInput";
+import {TextMaskModule} from "angular2-text-mask";
 
 @NgModule({
   declarations: [
     MainComponent, DemoModalServiceStaticComponent,
     LoginComponent, FormComponent, RepeatPasswordDirective,
-    GisComponent,GISDirective
+    GisComponent, GISDirective, NumberInput
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ModalModule.forRoot(),
+    TextMaskModule,
     RouterModule.forRoot([],
       {
         useHash: true
